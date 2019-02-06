@@ -4,7 +4,6 @@ module.exports = {
   // Get all data
   async get(req, res) {
     const tweets = await Tweet.find({}).sort('-createdAt');
-
     return res.json(tweets);
   },
   // Get by id
@@ -15,7 +14,7 @@ module.exports = {
   // Save data
   async store(req, res) {
     const tweet = await Tweet.create(req.body);
-
+    req.io.emit('newTweet', tweet);
     return res.json(tweet);
   },
   // Like data
@@ -25,7 +24,7 @@ module.exports = {
       likes: tweet.likes + 1
     });
     await tweet.save();
-
+    req.io.emit('likeTweet', tweet);
     return res.json(tweet);
   }
 }
