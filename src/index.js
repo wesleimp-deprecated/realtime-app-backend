@@ -18,11 +18,8 @@ app.use(cors());
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// middleware
-app.use((req, res, next) => {
-  req.io = io;
-  return next();
-});
+// io middleware
+app.use(require('./middleware/io')(io));
 
 // Register routes
 app.use('/api', require('./routes'));

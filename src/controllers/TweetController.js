@@ -17,6 +17,11 @@ module.exports = {
     req.io.emit('newTweet', tweet);
     return res.json(tweet);
   },
+  // Delete data
+  async delete(req, res){
+    await Tweet.deleteOne({ _id: req.params.id });
+    return res.json({ message: "Record deleted" });
+  },
   // Like data
   async like(req, res) {
     const tweet = await Tweet.findById(req.params.id);
