@@ -1,5 +1,5 @@
 const router = require('express').Router();
 
-router.use('/tweet', require('./tweet'));
+router.use('/post', require('./post'));
 
 module.exports = router;

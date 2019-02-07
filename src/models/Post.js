@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const TweetSchema = new mongoose.Schema({
+const PostSchema = new mongoose.Schema({
   author: String,
   content: String,
   likes: {
@@ -13,4 +13,4 @@ const TweetSchema = new mongoose.Schema({
   }
 });
 
-module.exports = mongoose.model('Tweet', TweetSchema);
+module.exports = mongoose.model('Post', PostSchema);

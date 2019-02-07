@@ -3,7 +3,10 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-const { connectionString, options} = require('./config/database');
+const {
+    connectionString,
+    options
+} = require('./config/database');
 
 const app = express();
 
@@ -16,7 +19,9 @@ mongoose.connect(connectionString, options);
 // server config
 app.use(cors());
 app.use(express.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
 
 // io middleware
 app.use(require('./middleware/io')(io));
