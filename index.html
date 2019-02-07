@@ -12,10 +12,10 @@
     <script>
         var socket = io("http://localhost:3001");
 
-        socket.on('newTweet', function(data){
+        socket.on('newPost', function(data){
             console.log(data);
         });
-        socket.on('likeTweet', function(data){
+        socket.on('likePost', function(data){
             console.log(data);
         });
     </script>
